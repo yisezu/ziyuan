@@ -1,0 +1,1 @@
+﻿document.write('<img src=\''+SitePath+'template/lvbai/images/250x250.jpg\' />')

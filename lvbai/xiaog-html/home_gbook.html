@@ -1,0 +1,89 @@
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="utf-8">
+	<meta http-equiv="X-UA-Compatible" content="IE=edge">
+	<title>用户留言 - {maccms:name}</title>
+	<meta name="keywords" content="{maccms:keywords}"/>
+	<meta name="description" content="{maccms:description}"/>
+	<meta name="applicable-device" content="pc,mobile" >
+	<meta http-equiv="Content-Type" content="text/html; charset=utf-8"/>
+	<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no">
+{maccms:include}
+</head>
+<body>
+{maccms:head}
+<div id="wrapper">
+	<div class="container">
+		<div class="row">
+			<div class="col-md-80">
+          		<div class="panel panel-default">           
+					<div class="panel-heading">
+					用户留言
+					</div>
+						<div class="panel-body">
+							<div id="wall">
+								<form class="form-horizontal" action="{maccms:path}index.php?m=gbook-save" method="post">
+								<input type="hidden" id="g_rid" name="g_rid" value="">
+								<div class="form-group">
+									<div class="col-xs-12 col-sm-10 col-sm-offset-1">
+										<textarea id="g_content" name="g_content" class="form-control" cols="75" rows="5" onKeyup="MAC.Remaining(this,200,'g_remaining')" onfocus="if(this.value=='请说明您的问题,并留下您的联系方式,以便我们处理。'){this.value='';}" onblur="if(this.value==''){this.value='请说明您的问题,并留下您的联系方式,以便我们处理。';};"	>请说明您的问题,并留下您的联系方式,以便我们处理。</textarea>
+									</div>
+								</div>
+									<div class="form-group">
+										<div class="col-xs-12 col-sm-10 col-sm-offset-1">
+											<div class="gbook-left">
+											　昵　称：<input id="g_name" name="g_name" type="text" value="">
+											</div>
+											<div class="gbook-left">
+											{if-A:{maccms:gbookverify}==1} 
+											　验证码：<input type="text" id="g_code" name="g_code"/>
+											<img id="g_code_img" class="cmt_verify" src="{maccms:path}inc/common/code.php?a=gbook&s=" title="看不清楚? 换一张！" onClick="src='{maccms:path}inc/common/code.php?a=gbook&s='+Math.random()"/>
+											{endif-A}											
+											</div>
+											<div class="clearfix"></div>
+											<div class="pull-right">
+											<input class="btn btn-primary" type="submit" value="发布" >
+											</div>
+										</div>
+									</div>
+								</form>
+							</div>							
+						<div id="wall_comments">
+						共 <span class="text-white">{maccms:count_gbook_all}</span> 条留言,今日 <span id="total_comments" class="text-white">{maccms:count_gbook_day}</span> 条留言.
+						{maccms:gbook pagesize=10 order=desc by=time}																	
+							<div id="wall_comment" class="col-xs-12 m-t-15">
+								<div class="row">
+									<div class="pull-left">
+									<img src="{maccms:path_tpl}images/duface.png" title="[gbook:name]" alt="[gbook:name]" class="img-responsive comment-avatar" />											
+									</div>
+									<div class="comment">
+										<div class="comment-info">												
+										<span class="name" href="javascript:;">[gbook:name]：</span>&nbsp;&nbsp;<span class="">[gbook:time style=Y-m-d H:i:s]</span>
+										</div>
+										<div class="comment-body overflow-hidden">[gbook:content]</div>
+										<div class="comment-actions">
+										{if-B:!isN("[gbook:reply]")}
+										<div class="cmt_item inner" >
+										<p class="name1" href="javascript:;">管理员回复：<span class="fr">[gbook:replytime style=Y-m-d H:i:s]</span></p>
+										<p>[gbook:reply]</p>
+										</div>
+										{endif-B}
+									</div>
+								</div>
+							</div>			
+						</div>							
+						{/maccms:gbook}	
+					</div>
+				</div>
+				<div class="clearfix"></div>
+			<div style="text-align: center;" class="ui-pages">{maccms:pages len=6}</div>
+			</div>
+		</div>
+	</div>
+</div>
+{maccms:foot}
+</div>
+</body>
+</html>

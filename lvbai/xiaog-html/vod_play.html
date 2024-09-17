@@ -1,0 +1,131 @@
+﻿
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<title>[vod:name]在线观看 - {maccms:name}</title>
+	<meta charset="utf-8">
+	<meta http-equiv="X-UA-Compatible" content="IE=edge">
+	<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no">
+	<meta http-equiv="Content-Type" content="text/html; charset=utf-8"/>
+	<meta name="robots" content="index, follow"/>
+	<meta name="revisit-after" content="1 days"/>
+	<meta name="keywords" content="[vod:name],[vod:tag]"/>
+	<meta name="description" content="[vod:name]由爱色在线av收集整理"/>
+{maccms:include}
+</head>
+<body>
+{maccms:head}
+<div id="wrapper">
+	<div class="container">
+		<div class="row">
+			<div class="col-md-8">
+				<h3 class="hidden-xs big-title-truncate m-t-0">[vod:name]</h3>
+				<h4 class="visible-xs big-title-truncate m-t-0">[vod:name]</h4>
+			</div>
+		</div>
+		<div class="row">
+			<div class="col-md-8">
+				<div>
+					<div id="flash" class="video-container">
+						[vod:playerinfo]
+	[vod:player]
+ 
+					</div>
+				</div>
+				<div class="vote-box col-xs-7 col-sm-2 col-md-2">
+					<div id="vote_msg" class="vote-msg">
+						<div class="pull-left">
+							<i class="glyphicon glyphicon-thumbs-up"></i> <span id="video_likes" class="text-white">[vod:digg]</span> <i class="glyphicon glyphicon-thumbs-down"></i>
+						</div>
+						<div class="clearfix"></div>
+					</div>
+				</div>
+				<div class="pull-right m-t-15">
+					<div id="share_video" class="pull-right">[vod:error]</div>																							
+					<div class="clearfix"></div>
+				</div>
+				<div id="vip_video" class="pull-right m-t-15 m-r-5">[vod:userfav]</div>
+				<div class="clearfix"></div>			
+				<div class="separator m-t-15 p-0"></div>
+				<div class="clearfix"></div>
+				<div class="pull-left user-container">
+					标签:[vod:taglink]
+				</div>
+				<div class="pull-right big-views hidden-xs">
+					发布于
+					<span class="text-white">[vod:time style=yy-m-d]</span>,
+					<span class="text-white">[vod:hits]</span> 人观看,
+					评分
+					<span class="text-white">[vod:score]</span>
+				</div>
+				<div class="pull-right big-views-xs visible-xs">
+					<span class="text-white">[vod:time style=yy-m-d]</span>,
+					<span class="text-white">[vod:hits]</span> 人观看,
+					评分：
+					<span class="text-white">[vod:score]</span>
+				</div>
+				<div class="clearfix"></div>
+				<div class="m-t-10 overflow-hidden">
+				</div>
+			</div>
+			<div class="col-md-4">
+				<div class="well ad-body">
+					<p class="ad-title">
+					<script src="{maccms:path_ads}ads300.js"></script>
+					</p>
+					<script src="{maccms:path_ads}ads300.js"></script>
+				</div>
+			</div>
+		</div>
+		<ul class="nav nav-tabs">
+			<li class="active"><a href="#related_videos" data-toggle="tab">相关视频 </a></li>
+			<li class=""><a href="#comments" data-toggle="tab">评论</a></li>
+		</ul>
+		<div class="tab-content m-b-20">
+			<div class="tab-pane fade active in" id="related_videos">
+				<input name="current_page_related_videos" type="hidden" value="1" id="current_page_related_videos"/>
+				<div class="row">
+					{maccms:vod type=current num=8 order=desc by=hits}
+					<div class="col-sm-6 col-md-3 col-lg-3">
+						<div class="well well-sm m-b-0 m-t-20">
+							<a href="[vod:playlink]">
+							<div class="thumb-overlay">
+								<img src="[vod:pic]" title="[vod:name]" class="img-responsive "/>
+								<div class="duration">
+									[vod:stint] 积分
+								</div>
+							</div>
+							<span class="video-title title-truncate m-t-5">[vod:name]</span>
+							</a>
+							<div class="video-added">
+							[vod:time style=yy-m-d]
+							</div>
+							<div class="video-views pull-left">
+								[vod:hits] 人观看
+							</div>
+							<div class="video-rating pull-right ">
+								<i class="fa fa-heart video-rating-heart "></i><b>[vod:score]</b>
+							</div>
+							<div class="clearfix">
+							</div>
+						</div>
+					</div>
+					{/maccms:vod}
+				</div>
+			</div>
+			<div class="tab-pane fade" id="comments">
+				<div class="m-b-20">
+				</div>
+					<div class="well well-sm m-t-20 m-b-0">
+						<span class="text-danger">暂无评论.</span>
+				</div>
+				<div class="clearfix">
+				</div>
+			</div>
+		</div>
+	</div>
+{maccms:foot}
+</div>
+</div>
+</body>
+</html>

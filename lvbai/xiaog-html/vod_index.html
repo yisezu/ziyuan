@@ -1,0 +1,120 @@
+﻿
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<title>{maccms:name} - 精准像素</title>
+	<meta charset="utf-8">
+	<meta http-equiv="X-UA-Compatible" content="IE=edge">
+	<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no">
+	<meta http-equiv="Content-Type" content="text/html; charset=utf-8"/>
+	<meta name="robots" content="index, follow"/>
+	<meta name="revisit-after" content="1 days"/>
+	<meta name="keywords" content="人人av,{maccms:name},爱色在线视频isezx.com"/>
+	<meta name="description" content="isezx.com"/>
+{maccms:include}
+</head>
+<body>
+{maccms:head}
+<div id="wrapper">
+	<div class="container">
+		<div class="well well-filters">
+			<div class="pull-left">
+				<h4>最新上传的视频</h4>
+			</div>
+			<div class="pull-right">
+				{maccms:menu type=2 table=vod}
+				<a class="btn btn-primary" href="[menu:link]"><span class="hidden-xs"><i class="fa fa-plus"></i> 更多最新上传视频</span><span class="visible-xs"><i class="fa fa-plus"></i></span></a>
+				{/maccms:menu}
+			</div>
+			<div class="clearfix">
+			</div>
+		</div>
+		<div class="row">
+			<div class="col-md-9 col-sm-8">
+				<div class="row">
+				{maccms:vod num=6 order=desc by=time type=2,3,4,5}
+					<div class="col-sm-6 col-md-4 col-lg-4">
+						<div class="well well-sm">
+							<a href="[vod:playlink]">
+							<div class="thumb-overlay">
+								<img src="[vod:pic]" title="[vod:name]" class="img-responsive "/>
+								<div class="duration">
+									[vod:stint] 积分
+								</div>
+							</div>
+							<span class="video-title title-truncate m-t-5">[vod:name]</span>
+							</a>
+							<div class="video-added">
+							[vod:time style=yy-m-d]
+							</div>
+							<div class="video-views pull-left">
+							[vod:hits] 人观看
+							</div>
+							<div class="video-rating pull-right ">
+								<i class="fa fa-heart video-rating-heart "></i><b>[vod:score]</b>
+							</div>
+							<div class="clearfix">
+							</div>
+						</div>
+					</div>
+            	{/maccms:vod}
+				</div>
+			</div>
+			<div class="col-md-3 col-sm-4">
+				<div class="well ad-body">
+					<p class="ad-title">
+							<script src="{maccms:path_ads}ads300.js"></script>
+					</p>
+					<script src="{maccms:path_ads}ads300.js"></script>
+				</div>
+			</div>
+		</div>
+		<div class="well well-filters">
+			<div class="pull-left">
+				<h4>VIP会员专区</h4>
+			</div>
+			<div class="pull-right">
+		{maccms:menu type=6 order=asc table=vod}
+				<a class="btn btn-primary" href="[menu:link]"><span class="hidden-xs"><i class="fa fa-plus"></i> 更多VIP会员视频</span><span class="visible-xs"><i class="fa fa-plus"></i></span></a>
+		{/maccms:menu}
+			</div>
+			<div class="clearfix">
+			</div>
+		</div>
+		<div class="row">
+			<div class="col-sm-12">
+				<div class="row">
+				{maccms:vod num=8 order=desc by=time type=6,7}
+					<div class="col-sm-4 col-md-3 col-lg-3">
+						<div class="well well-sm">
+							<a href="[vod:playlink]">
+							<div class="thumb-overlay">
+								<img src="[vod:pic]" title="[vod:name]" class="img-responsive "/>
+								<div class="duration">
+									[vod:stint] 积分
+								</div>
+							</div>
+							<span class="video-title title-truncate m-t-5">[vod:name]</span>
+							</a>
+							<div class="video-added">
+							[vod:time style=yy-m-d]
+							</div>
+							<div class="video-views pull-left">
+							[vod:hits] 人观看
+							</div>
+							<div class="video-rating pull-right ">
+								<i class="fa fa-heart video-rating-heart "></i><b>[vod:score]</b>
+							</div>
+							<div class="clearfix">
+							</div>
+						</div>
+					</div>
+				{/maccms:vod}
+				</div>
+			</div>
+		</div>
+{maccms:foot}
+</div>
+</div>
+</body>
+</html>

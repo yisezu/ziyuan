@@ -1,0 +1,70 @@
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<title>[vod:name] - {maccms:name}</title>
+	<meta charset="utf-8">
+	<meta http-equiv="X-UA-Compatible" content="IE=edge">
+	<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no">
+	<meta http-equiv="Content-Type" content="text/html; charset=utf-8"/>
+	<meta name="robots" content="index, follow"/>
+	<meta name="revisit-after" content="1 days"/>
+	<meta name="keywords" content="[vod:name]"/>
+	<meta name="description" content="[vod:name]由{maccms:name}分享。"/>
+{maccms:include}
+</head>
+<body>
+{maccms:head}
+<div id="wrapper">
+	<div class="container">
+		<div class="row">
+			<div class="col-md-9 col-sm-8">
+				<div class="well well-sm">
+				当前位置 - [vod:typename] - <span class="text-white">[vod:name]</span> 
+				</div>
+				<div class="row">
+					<div class="col-sm-6 col-md-4 col-lg-4">
+						<div class="well well-sm">
+							<a href="[vod:playlink]">
+							<div class="thumb-overlay">
+								<img src="[vod:pic]" title="[vod:name]" class="img-responsive "/>
+								<div class="duration">
+									[vod:time style=m-d]
+								</div>
+							</div>
+							<span class="video-title title-truncate m-t-5">[vod:name]</span>
+							</a>
+							<div class="video-views pull-left">
+							[vod:hits] 人观看
+							</div>
+							<div class="video-rating pull-right ">
+								<i class="fa fa-heart video-rating-heart "></i><b>[vod:score]</b>
+							</div>
+							<div class="clearfix">
+							</div>
+						</div>
+					</div>
+				</div>
+			</div>
+			<div class="col-md-3 col-sm-4">
+				<div class="list-group">
+				{maccms:menu type=1 order=asc table=vod}
+					<a href="[menu:link]" {if-A:[menu:id]={maccms:curvodtypeid}} class="list-group-item active"{endif-A} class="list-group-item">[menu:name]</a>
+				{/maccms:menu}	
+				 {maccms:menu type=child}
+					<a href="[menu:link]" {if-A:[menu:id]={maccms:curvodtypeid}} class="list-group-item active"{endif-A} class="list-group-item">[menu:name]</a>
+				{/maccms:menu}
+				</div>
+				<div class="well ad-body">
+					<p class="ad-title">
+						赞助商
+					</p>
+					<script src="{maccms:path_ads}ads300.js"></script>
+				</div>
+			</div>
+		</div>
+	</div>
+{maccms:foot}
+</div>
+</body>
+</html>
