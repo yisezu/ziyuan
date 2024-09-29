@@ -1,0 +1,16 @@
+{include file="ads/hengfu"}
+{maccms:type ids="parent" order="asc" by="sort" flag="vod"}
+			<div class="stui-pannel clearfix">
+				<div class="stui-pannel__head clearfix">
+					<a class="text-muted pull-right" href="{:mac_url_type($vo,[],'type')}">更多 &gt;</a>
+					<h3 class="title">
+						{$vo.type_name}
+					</h3>								
+				</div>
+				<ul class="stui-vodlist clearfix">
+				  {maccms:vod type="'.$vo['type_id'].'" order="desc" by="time_add" num="12"}				
+					{include file="public/vodbox"}																		
+					{/maccms:vod}	
+				</ul>			
+			</div>
+			{/maccms:type}

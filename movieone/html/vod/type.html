@@ -1,0 +1,38 @@
+<!DOCTYPE html>
+<html>
+ <head>
+          {include file="public/include"}
+     <title>{$obj.type_name}数据列表-第{$param.page}页-{$maccms.site_name}</title>
+     <meta name="keywords" content="{$obj.type_name}数据列表-第{$param.page}页-{$maccms.site_name}" />
+     <meta name="description" content="{$obj.type_name}数据列表-第{$param.page}页-{$maccms.site_name}" />
+ </head>
+ <body>
+ 
+    <div class="container">
+        <div class="row">
+        	{include file="public/head"}
+			<div class="stui-pannel clearfix">		
+				<ul class="stui-screen__list type-slide clearfix">
+		      	   {if condition="$obj.type_pid eq 0"}    
+				{maccms:type parent="'.$obj['type_id'].'" order="asc" by="sort" }
+		      	 <li><a href="{:mac_url_type($vo)}" class="order {if condition="($vo.type_id eq $GLOBALS['type_id'] || $vo.type_id eq $GLOBALS['type_pid'])"}current{/if}">{$vo.type_name}</a></li>
+		      	   {/maccms:type}
+		      	   {else}
+					{maccms:type parent="'.$obj['type_pid'].'" order="asc" by="sort" }
+					 <li><a href="{:mac_url_type($vo)}" class="order {if condition="($vo.type_id eq $GLOBALS['type_id'] || $vo.type_id eq $GLOBALS['type_pid'])"}current{/if}">{$vo.type_name}</a></li>
+					       {/maccms:type}
+				{/if}
+				</ul>
+				 
+				<ul class="stui-vodlist clearfix">
+					{maccms:vod num="24" paging="yes" type="current" order="desc" by="time"}
+					{include file="public/vodbox"}
+					{/maccms:vod}	 
+				</ul>
+				{include file="public/paging"}	
+			</div>							
+        </div>
+    </div>
+ {include file="public/foot"}
+ </body>
+</html>

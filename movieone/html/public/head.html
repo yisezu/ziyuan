@@ -1,0 +1,91 @@
+<body class="mdui-appbar-with-toolbar mdui-drawer-body-left mdui-theme-primary-indigo mdui-theme-accent-pink">
+<!--[if lt IE 8]>
+<div class="browsehappy" role="dialog">当前网页 <strong>不支持</strong> 你正在使用的浏览器. 为了正常的访问, 请 <a
+    href="http://browsehappy.com/">升级你的浏览器</a>.
+</div>
+<![endif]-->
+<div class="mdui-appbar mdui-appbar-fixed">
+    <div class="mdui-toolbar mdui-color-indigo">
+        <a href="javascript:;" class="mdui-btn mdui-btn-icon " mdui-drawer="{target: '#left-drawer'}"><i
+                class="mdui-icon material-icons">&#xe5d2;</i></a>
+        <a href="\" class="mdui-typo-headline">{$maccms.site_name}</a>
+        <div class="mdui-toolbar-spacer"></div>
+        <a href="javascript:;" class="mdui-btn mdui-btn-icon" mdui-tooltip="{content: '搜索'}"
+           mdui-dialog="{target: '#search'}"><i class="mdui-icon material-icons">&#xe8b6;</i></a>
+    </div>
+</div>
+<div class="mdui-dialog" id="search">
+    <form method="post" action="{:mac_url('vod/search')}">
+        <div class="mdui-textfield mdui-textfield-floating-label">
+            <i class="mdui-icon material-icons"></i>
+            <label class="mdui-textfield-label">名称</label>
+            <input type="text" autocomplete="off" name="wd" placeholder="{$ds.web.so.txt}" value="" class="mdui-textfield-input"/>
+            <div class="mdui-textfield-error">关键词不能为空</div>
+            <div class="mdui-textfield-helper">请输入要输入的影片！宁可少输入不可多输入</div>
+        </div>
+        <div class="mdui-dialog-actions">
+            <button type="submit" class="mdui-btn mdui-ripple">搜索</button>
+            <button class="mdui-btn mdui-ripple" mdui-dialog-close="">返回</button>
+        </div>
+    </form>
+</div>
+<!-- 抽屉 -->
+<div class="mdui-drawer" id="left-drawer">
+    <div class="my-info mdui-text-center">
+        <img class="mdui-img-rounded mdui-img-fluid avatar"
+             src="{$maccms.path_tpl}image/logo.png"/>
+             <!--logo在这里修改-->
+        <span>{$maccms.site_name}</span>
+    </div>
+    <div class="mdui-list" mdui-collapse="{accordion: true}">
+        <!-- 首页导航 -->
+        <div class="mdui-collapse-item">
+            <div class="mdui-collapse-item-header mdui-list-item mdui-ripple">
+                <i class="mdui-list-item-icon mdui-icon material-icons mdui-text-color-blue">widgets</i>
+                <div class="mdui-list-item-content"><a href="/">首页</a></div>
+            </div>
+        </div>
+        <!-- 分类导航 -->
+        {maccms:type num="6" order="asc" by="sort" ids="parent"}
+        <div class="mdui-collapse-item">
+            <div class="mdui-collapse-item-header mdui-list-item mdui-ripple">
+                <i class="mdui-list-item-icon mdui-icon material-icons mdui-text-color-blue">movie_filter</i>
+        <div class="mdui-list-item-content"><a href="{:mac_url_type($vo)}">{$vo.type_name}</a></div>
+                <i class="mdui-collapse-item-arrow mdui-icon material-icons">&#xe313;</i>
+        </div>
+		{if $vo.childids}
+		<div class="mdui-collapse-item-body mdui-list">
+		    {maccms:type parent="'.$vo['type_id'].'" order="asc" by="sort" id="vo2" key="key2"}
+							 <a href="{:mac_url_type($vo2,[],'show')}"
+                       class="mdui-list-item mdui-ripple ">{$vo2.type_name}</a>
+							 {/maccms:type}
+		</div>
+		{/if}
+		</div>
+		{/maccms:type}
+
+        <!-- 组合导航 -->
+        <div class="mdui-collapse-item">
+            <div class="mdui-collapse-item-header mdui-list-item mdui-ripple">
+                <i class="mdui-list-item-icon mdui-icon material-icons mdui-text-color-blue">&#xe157;</i>
+                <div class="mdui-list-item-content">友情链接</div>
+                <i class="mdui-collapse-item-arrow mdui-icon material-icons">&#xe313;</i>
+            </div>
+            <div class="mdui-collapse-item-body mdui-list">
+                {maccms:link num="10" type="all" order="asc" by="sort"}
+                <a href="{$vo.link_url}" target="_blank" title="{$vo.link_name}" rel="nofollow" class="mdui-list-item mdui-ripple ">{$vo.link_name}</a> 
+                {/maccms:link}
+            </div>
+        </div>
+        <div class="mdui-divider"></div>
+        <div class="mdui-collapse-item">
+<!--            mdui-ripple hitokoto -->
+            <div class="hitokoto mdui-ripple">
+                <i class="mdui-list-item-icon mdui-icon material-icons mdui-text-color-cyan">&#xe7f5;</i>
+                <span class="hitokoto-content">
+                    正在加载一言...
+                </span>
+            </div>
+        </div>
+    </div>
+</div>

@@ -1,0 +1,41 @@
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8">
+<meta http-equiv="X-UA-Compatible" content="IE=EmulateIE10">
+<meta name="renderer" content="webkit|ie-comp|ie-stand">
+<meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=0">
+<link rel="shortcut icon" href="{$maccms.path_tpl}image/favicon.ico" type="image/x-icon" />
+<!-- css -->
+<link href="{$maccms.path_tpl}css/mdui.min.css" rel="stylesheet">
+<link href="{$maccms.path_tpl}css/github-gist.min.css" rel="stylesheet">
+
+
+<link rel="stylesheet" href="{$maccms.path_tpl}css/jquery.fancybox.min.css">
+<link rel="stylesheet" href="{$maccms.path_tpl}css/stui_default.css" />
+
+<script src="{$maccms.path_tpl}js/jquery.min.js"></script>
+
+<!--[if lt IE 9]>
+<script src="{$maccms.path_tpl}js/respond.min.js"></script>
+<![endif]-->
+<link rel="stylesheet" href="{$maccms.path_tpl}css/style.css">
+
+<script>var maccms={"path":"__ROOT__","mid":"{$maccms['mid']}","aid":"{$maccms['aid']}","url":"{$maccms['site_url']}","wapurl":"{$maccms['site_wapurl']}","mob_status":"{$maccms['mob_status']}"};</script>
+<!--[if lt IE 9]>
+<script src="{$maccms.path_tpl}js/html5shiv.min.js"></script>
+<script src="{$maccms.path_tpl}js/respond.min.js"></script>
+<![endif]-->
+
+<!-- end #footer -->
+<a href="#top" target="_self" class="mdui-fab mdui-fab-fixed mdui-ripple mdui-color-theme-accent"><i class="mdui-icon material-icons">&#xe5d8;</i></a>
+
+<!-- 本地 -->
+<script src="{$maccms.path_tpl}js/mdui.min.js"></script>
+
+
+<script>
+    $.ajax({
+        url:'https://v1.hitokoto.cn/?encode=text',
+        success:function (data) {
+            $('.hitokoto-content').text(data);
+        }
+    })
+</script>
