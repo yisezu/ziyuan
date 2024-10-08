@@ -1,0 +1,17 @@
+<div class="content">
+<div class="container">
+<div class="stui-header__top clearfix" style="position: relative;height: 60px;padding: 0 5px;">					
+	<div class="stui-header__logo" style="margin: 1px 0 0;padding: 0;float: left;">
+		<a href="{$maccms.path}" title="{$maccms.site_name}">
+		    <img style="max-height: 40px;margin-top: 10px;" src="{$maccms.site_logo|mac_url_img}" alt="{$maccms.site_name}"></a>
+	</div>				
+	<div class="stui-header__search" style="float: none;width: auto;margin: 0;position: absolute;top: 15px;right: 10px;left: 168px;"> 
+		 <form id="search" name="search" method="get" action="{:mac_url('vod/search')}" onsubmit="return qrsearch();">
+			<input type="text" id="wd" name="wd" class="mac_wd form-control" value="" placeholder="共有影片:{:mac_data_count(0,'all','vod')}部 请输入关键词..." style="display: block;width: 100%;height: 35px;padding: 6px 45px 6px 10px;font-size: 12px;line-height: 32px;border-radius: 5px;background-color: #f5f5f5;color: #ffffff;border: 0;">
+			<button class="submit" id="searchbutton" type="submit" name="submit" style="display: block;position: absolute;top: 0;right: 0;width: 35px;height: 35px;border: 0;cursor: pointer;background: url({$maccms.path_tpl}/image/icon_seacrh.png) center no-repeat;background-color: #ff3366;border-radius: 0px 5px 5px 0px;">
+			</button>
+		</form>
+	</div>
+</div>
+</div>
+</div>  

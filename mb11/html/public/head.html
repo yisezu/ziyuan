@@ -1,0 +1,39 @@
+<div class="appel">
+{include file="public/nav"}
+{include file="ads/hengfu"}
+
+</div>
+<div class="appel">
+        			<div id="ddab">
+				<div class="seach">
+					<form action="{:mac_url('vod/search')}" method="get">
+						<input type="text" placeholder="视频关键词..." id="searchbutton" name="wd">
+						<button>视频搜索</button>
+					</form>
+				</div>
+			</div>
+
+</div>
+<div class="appel">
+
+			<div id="youmu" class="youmu-app">
+			    {include file="ads/daohangwenzi"}
+				<div class="area">
+				     {maccms:type order="asc" by="sort" ids="parent"}
+					<dl class="first">
+						<dt><a href="{:mac_url_type($vo)}">{$vo.type_name}</a></dt>
+						{maccms:type parent="'.$vo['type_id'].'"  order="asc" id="vo2" key="key2"}	
+						{if condition="$key lt 20"}
+						<dd><a href="{:mac_url_type($vo2)}">{$vo2.type_name}</a></dd>
+						{/if}
+						{/maccms:type}
+					</dl>
+				   {/maccms:type}
+				</div>
+			</div>
+</div>
+
+<div class="appel">
+{include file="ads/tubiao"}
+{include file="ads/caisewenzi"}
+</div>

@@ -1,0 +1,16 @@
+<div class="appel">
+    <div class="mhlleset clearfix">
+	<div class="mhlleset-main">
+		<div class="appel-heading clearfix">
+			<h3 class="appel-title">最近更新</h3>
+			<h4 class="appel-title" style="float: right; padding-right: 10px;"><a href="http://{$maccms.site_url}"><span class="frvod">今日更新 <font>{:mac_data_count(0,'today','vod')}</font> 部&gt;&gt;</span></a></h4>
+		</div>
+		<ul class="thumbnail-group clearfix">
+{include file="ads/shipinkuang"}<!--视频框广告-->
+			{maccms:vod num="10" type="all" order="desc" by="time" } 
+			{include file="public/vodbox"} 
+			{/maccms:vod}
+		</ul>
+	</div>
+</div>
+</div>

@@ -1,0 +1,89 @@
+<!DOCTYPE html>
+<html lang="zh-cn">
+ <head> 
+  <meta name="keywords" content="{$obj.type.type_name}{$obj.vod_name}_{$maccms.site_name}" />
+  <meta name="description" content="{$obj.type.type_name}{$obj.vod_name}_{$maccms.site_name}" />
+  <title>{$obj.vod_name}剧情介绍--{$maccms.site_name}</title>
+{include file="public/include"}
+</head>
+<body>
+<div class="content">
+	<div class="container">
+	{include file="public/head"}
+	<div class="appel">
+  	<div class="breadcrumbs">您的位置：<a href="{$maccms.path}">首页</a><em class="sep">></em><a
+  			href="{:mac_url_type($obj,[],'type')}">{$obj.type.type_name}</a><em
+  			class="sep">></em><span>{$obj.vod_name}</span></div>
+  	<div class="detail clearfix">
+  		<div class="detail-poster">
+  			<a href="{:mac_url_vod_play($obj)}"><img src="{:mac_url_img($obj.vod_pic)}"
+  					alt="{$obj.vod_name}"></a>
+  		</div>
+  		<div class="detail-info">
+  			<ul class="detail-actor clearfix">
+  				<li>片名：{$obj.vod_name}</li>
+  				<li><label>类型：</label>{$obj.type.type_name}</li>
+  				<li><label>更新：</label>{$obj.vod_time|date='Y-m-d',###}</li>
+  				<!--<li><label><font color="#FF0000" size="3">重要说明： </font></label>如遇到移动网络无法播放，请使用其他网络进行观看！</li>-->
+  				<!--<li><label>请牢记本站地址： </label><font color="#FF0000">{$maccms.site_url}</font></li>-->
+  			</ul>
+  		</div>
+  		<div class="detail-source">
+  			<ul class="detail-tab ff-playurl-tab detail-tab-zt clearfix slider-list" id="detail-tab"
+  				>
+  			    {maccms:foreach name="obj.vod_play_list" id="vo"}
+  				<!--<li {if condition="$key eq 1"}class="active"{/if}><a>{$vo.player_info.show}</a></li>-->
+  				<li {if condition="$key eq 1"}class="active"{/if}><a>{$maccms.site_name}</a></li>
+  				{/maccms:foreach}
+  			</ul>
+  			<div class="detail-content tab-content ff-playurl-tab" id="detail-content">
+  			    	{maccms:foreach name="obj.vod_play_list" id="vo" by="sort"}	
+  				<ul class="detail-play-list clearfix tab-pane ff-playurl ff-playurl-tab-1 episode  {if condition="$key eq 1"}active{/if} fade in" >
+  				    {maccms:foreach name="vo.urls" id="vo2" key="key2"}
+  					<!--<li><a href="{:mac_url_vod_play($obj,['sid'=>$vo.sid,'nid'=>$vo2.nid])}" title="{$vo2.name}">{$vo2.name}</a></li>调用资源站名称-->
+  					  <li><a href="{:mac_url_vod_play($obj,['sid'=>$vo.sid,'nid'=>$vo2.nid])}" title="{$vo2.name}">立即播放</a></li>
+  					  <li><a id="shareQrcode" onclick="copyHtmlLink();">分享</a></li>
+  					{include file="ads/wenzi"}
+                {/maccms:foreach}
+  				</ul>
+  					 {/maccms:foreach}
+  			</div>
+  		</div>
+  	</div>
+  </div>
+  			<textarea id="copy" style="display:none;"></textarea>
+
+<!--<div class="appel">-->
+<!--<div style="padding:1px;">-->
+			<!--<textarea id="copy" style="display:none;"></textarea>-->
+			<!--<div style="background: linear-gradient(39deg,#4ea2ff 22%,#6e8eff 59%,#8e7aff); border-radius: 3px; padding: 3px 5px 3px 5px; text-align: center;">-->
+			<!--    <a data-toggle="modal" style="color: #ffffff;" id="shareQrcode" onclick="copyHtmlLink();">点击复制链接分享给好友一起欣赏</a><br>-->
+			<!--	<span id="thisUrlID" style="color: #ffffff;"></span>-->
+			<!--</div>-->
+			<script>
+				function copyHtmlLink() {
+					var str = window.location.href;
+					copyText(str);
+				}
+
+				$(function() {
+					$('#thisUrlID').html(window.location.href);
+				});
+
+				function copyText(str) {
+					$('#copy').text(str).show();
+					var ele = document.getElementById("copy");
+					ele.select();
+					document.execCommand('copy', false, null);
+					$('#copy').hide();
+					alert('复制成功!发送给您的好友一起欣赏吧！\n\n同时请牢记【{$maccms.site_name}】\n\n永久域名：{$maccms.site_url}');
+				}
+			</script>
+<!--		</div>-->
+<!--</div>-->
+{include file="vod/like"}
+</div>
+</div>
+{include file="public/foot"}
+</body>
+</html>
